@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080d18"><meta name="description" content="SKYCITY PRO — 3D multiplayer drone simulator">
+  <title>SKYCITY PRO</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="scene"></div><div class="vignette"></div>
+  <header class="topbar"><a class="brand" href="#"><img class="brand-logo" src="/assets/skycity-logo.jpg" alt="SKYCITY Drone Racing logosi"><span>SKYCITY <b>PRO</b><small>DRONE SIMULATOR</small></span></a>
+    <div class="top-actions"><span id="connection" class="status">● OFFLINE</span><button id="logoutBtn" class="ghost hidden">Chiqish</button></div>
+  </header>
+  <main class="shell">
+    <section id="authPanel" class="glass auth-card">
+      <div class="eyebrow">NEXT GENERATION FLIGHT</div><h1>SHАHARNI <span>EGALLA.</span></h1><p class="muted">SKYCITY multiplayer olamiga xush kelibsiz.</p>
+      <div class="tabs"><button class="tab active" data-tab="login">Kirish</button><button class="tab" data-tab="register">Ro‘yxatdan o‘tish</button></div>
+      <form id="authForm">
+        <label id="usernameWrap" class="hidden">Noyob username<input id="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" autocomplete="username" placeholder="pilot_uz"></label>
+        <label>Email<input id="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+        <label>Parol<input id="password" type="password" minlength="8" required autocomplete="current-password" placeholder="Kamida 8 belgi"></label>
+        <button class="primary full" type="submit" id="authSubmit">Kirish <span>↗</span></button>
+      </form>
+      <p id="authMessage" class="message"></p><small class="muted">Akkauntingiz Supabase’da saqlanadi. Seans avtomatik tiklanadi.</small>
+    </section>
+
+    <section id="appPanel" class="hidden">
+      <div class="hero glass"><div><div class="eyebrow">PILOT CONTROL CENTER</div><h1>UCHISHGA <span>TAYYOR.</span></h1><p class="muted">Salom, <b id="pilotName">Pilot</b>. Osmonda o‘z yo‘lingni yarat.</p></div><div class="premium-chip" id="premiumChip">◇ FREE PILOT</div></div>
+      <div class="grid">
+        <article class="glass panel"><div class="panel-head"><div><div class="eyebrow">FLIGHT MODES</div><h2>Parvoz rejimlari</h2></div><span class="live-dot">LIVE</span></div>
+          <div class="mode-list"><button class="mode active" data-mode="free"><span>✦</span><div><b>Erkin uchish</b><small>Shaharni o‘rganish</small></div><i>↗</i></button><button class="mode" data-mode="race"><span>⌁</span><div><b>Drone Racing</b><small>Checkpoint poygasi (demo)</small></div><i>↗</i></button><button class="mode" data-mode="arcade"><span>◈</span><div><b>Arcade Arena</b><small>Virtual energy-tag</small></div><i>↗</i></button></div>
+          <div class="controls"><b>BOSHQARUV</b><span>WASD — harakat</span><span>↑ ↓ — balandlik</span><span>← → — burilish</span><span>Shift — tezlik</span></div>
+        </article>
+        <article class="glass panel"><div class="panel-head"><div><div class="eyebrow">MULTIPLAYER</div><h2>Komanda / xona</h2></div><span class="count">4 PILOT</span></div>
+          <p class="muted">Do‘stlaring bilan maxsus kodli xonada uch.</p>
+          <label>Xona nomi<input id="roomName" maxlength="40" value="My SkyCity Team"></label>
+          <button id="createRoom" class="primary full">＋ Kodli xona ochish</button>
+          <div class="room-join"><label>Xona kodi<input id="roomCode" maxlength="12" placeholder="A1B2C3D4"></label><button id="joinRoom" class="secondary">Kirish</button></div>
+          <p id="roomMessage" class="message"></p><div id="roomPlayers" class="players"></div>
+          <div class="premium-note">◇ Kodli xona yaratish Premium imkoniyati. Premiumni faqat administrator beradi.</div>
+        </article>
+        <article class="glass panel"><div class="panel-head"><div><div class="eyebrow">PILOT PROFILE</div><h2>Profil</h2></div><span class="avatar">✦</span></div>
+          <div class="profile-row"><span>Username</span><b id="profileUsername">—</b></div><div class="profile-row"><span>Holat</span><b id="profileStatus">Free</b></div><div class="profile-row"><span>Premium tugashi</span><b id="premiumExpiry">—</b></div>
+          <div class="premium-box"><b>PREMIUM ACCESS</b><p>Admin tomonidan berilgan ruxsat bilan maxsus xona va kod yaratish ochiladi.</p><small>To‘lov hozircha ulanmagan.</small></div>
+        </article>
+        <article class="glass panel"><div class="panel-head"><div><div class="eyebrow">GLOBAL RANK</div><h2>Reyting</h2></div><span>🏆</span></div><div id="leaderboard" class="leaderboard"><p class="muted">Kirishdan so‘ng yuklanadi.</p></div></article>
+      </div>
+      <section id="adminPanel" class="glass panel admin hidden"><div class="panel-head"><div><div class="eyebrow">SYSTEM ADMINISTRATION</div><h2>Admin panel</h2></div><span class="admin-badge">ADMIN</span></div>
+        <p class="muted">Foydalanuvchini username orqali toping va Premium ruxsatini boshqaring.</p>
+        <div class="room-join"><label>Username qidirish<input id="userSearch" placeholder="username"></label><button id="searchUsers" class="secondary">Qidirish</button></div>
+        <div id="userResults" class="user-results"><p class="muted">Foydalanuvchilar ro‘yxati.</p></div>
+        <p id="adminMessage" class="message"></p>
+      </section>
+    </section>
+  </main>
+  <footer>SKYCITY PRO <span>•</span> VIRTUAL FLIGHT EXPERIENCE</footer>
+  <script type="module" src="/app.js"></script>
+</body></html>
